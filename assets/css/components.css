@@ -61,6 +61,20 @@
   align-items: center;
   gap: var(--s-6);
   margin-left: var(--s-6);
+  /* nav-links 는 .nav-inner 바깥 형제라 flex 가 빠짐.
+     데스크탑에서는 nav-inner 안에 시각적으로 끌어와 brand 옆에 정렬한다. */
+}
+
+@media (min-width: 821px) {
+  .nav-inner { position: relative; }
+  .nav-links {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - var(--container) / 2 + var(--gutter) + 119px + var(--s-6));
+    transform: translateY(-50%);
+    margin-left: 0;
+    background: transparent;
+  }
 }
 .nav-links a {
   font-size: 15px;
@@ -127,10 +141,22 @@
     margin: 0;
     padding: var(--s-4) var(--gutter);
     border-bottom: 1px solid var(--border);
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
     transform: translateY(-110%);
-    transition: transform var(--dur-base) var(--ease-out);
+    transition: transform var(--dur-base) var(--ease-out),
+                opacity var(--dur-base) var(--ease-out),
+                visibility 0s linear var(--dur-base);
   }
-  .nav-links.is-open { transform: translateY(0); }
+  .nav-links.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition: transform var(--dur-base) var(--ease-out),
+                opacity var(--dur-base) var(--ease-out),
+                visibility 0s linear 0s;
+  }
   .nav-links a { padding: var(--s-3) 0; }
   .nav-burger { display: flex; }
 }

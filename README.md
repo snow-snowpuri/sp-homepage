@@ -155,24 +155,86 @@ composer require phpmailer/phpmailer
 
 ## 배포 (Hostinger)
 
+두 가지 방법이 있습니다 — **GitHub Actions 자동 배포 (권장)** 또는 **수동 FTP 업로드**.
+
+### 방법 1 — GitHub Actions 자동 배포
+
+`main` 브랜치에 push 하면 자동으로 빌드 검증 + FTP 업로드가 실행됩니다.
+워크플로우 정의: `.github/workflows/deploy.yml`
+
+**1단계: Hostinger FTP 계정 확인**
+
+hPanel → Files → FTP Accounts 에서 다음 정보를 확인합니다.
+
+| 항목 | 예시 | 비고 |
+|---|---|---|
+| FTP 호스트 | `ftp.snowpuri.com` | 또는 hPanel 의 `Server Host` 값 |
+| FTP 사용자명 | `u123456789.snowpuri.com` | 도메인 포함된 풀 계정명 |
+| FTP 비밀번호 | (hPanel 설정값) | 계정 생성 시 발급 |
+
+hPanel → Files → FTP Accounts → "FTP Accounts" 옆 ⚙️ → **FTPS/SSL 활성화** 권장 (평문 FTP 는 피함).
+
+**2단계: GitHub Secrets 등록**
+
+GitHub 저장소 → Settings → Secrets and variables → Actions → **New repository secret** 으로 다음을 추가합니다.
+
+| Secret 이름 | 필수 | 설명 | 예시 |
+|---|---|---|---|
+| `FTP_SERVER` | ✅ | FTP 호스트 | `ftp.snowpuri.com` |
+| `FTP_USERNAME` | ✅ | FTP 계정 아이디 | `u123456789.snowpuri.com` |
+| `FTP_PASSWORD` | ✅ | FTP 계정 비밀번호 | (hPanel 의 비밀번호) |
+| `FTP_LOCAL_DIR` | 선택 | 업로드할 로컬 디렉터리 (기본 `.`) | `.` |
+| `FTP_REMOTE_DIR` | 선택 | 원격 업로드 경로 (기본 `/public_html`) | `/public_html` |
+| `FTP_SECURE` | 선택 | `ftps` 또는 `ftp` (기본 `ftps`) | `ftps` |
+
+> ⚠️ **Secrets 는 절대 코드에 커밋하지 마세요.** 저장소 Settings → Secrets 가 가장 안전한 저장소입니다.
+
+**3단계: 자동 배포 트리거**
+
+- `main` 브랜치에 push 하면 Actions 탭에서 자동으로 실행
+- Actions 탭 → "Deploy to Hostinger" → **Run workflow** 로 수동 트리거 가능
+- 워크플로우는 두 단계: `validate` (PHP 문법 + JSON 검증) → `deploy` (FTP 업로드). validate 실패 시 deploy 는 실행 안 됨
+
+**4단계: 호스팅 설정 (최초 1회)**
+
+hPanel 에서:
+
+1. **Advanced → PHP Configuration** → PHP **8.0+** 선택 (이 프로젝트는 PHP 7.4+ 호환)
+2. **Security → SSL** → Free SSL (Let's Encrypt) 활성화
+3. **Files → File Manager** → `public_html` 비어 있는지 확인 (FTP 업로드와 충돌 방지)
+4. 도메인 `snowpuri.com` → `public_html` 연결 확인
+
+**5단계: 배포 후 확인**
+
+- `https://snowpuri.com/ko/` 접속 → 히어로 / 네비 정상 표시
+- 문의 폼 작성 → `snow@snowpuri.com` 메일 수신 확인
+- `.htaccess` 의 HTTPS 강제 / 캐싱 / 압축 동작 확인
+
+### 방법 2 — 수동 FTP 업로드 (초기 설정 또는 비상시)
+
+자동 배포가 동작하지 않을 때 (예: 시크릿 미설정, GitHub 장애) 수동 업로드:
+
 1. hPanel 로그인 → File Manager → `public_html` 진입
-2. 이 폴더의 모든 파일/폴더를 `public_html` 아래에 업로드
-   - **빠른 방법**: 로컬에서 `zip -r homepage.zip .` 후 File Manager 에서 업로드+압축 해제
-3. hPanel > Advanced > PHP Configuration → PHP 8.0+ 선택
-4. hPanel > Security > SSL → Free SSL 활성화
-5. 도메인 `snowpuri.com` → `public_html` 연결 확인
-6. 테스트: `https://snowpuri.com/ko/` 접속
-7. 문의 폼 테스트: 폼 작성 → `snow@snowpuri.com` 메일 수신 확인
+2. 로컬에서 `zip -r homepage.zip .` 으로 압축 (단, `.git` `docker/` `docs/` `README.md` `CLAUDE.md` 제외)
+3. File Manager 에서 `homepage.zip` 업로드 후 압축 해제
+4. SSL / PHP 버전 설정은 위 4 단계 참고
+
+> 💡 자동 배포와 수동 업로드의 가장 큰 차이: **자동은 PR / commit 단위로 이력 추적이 되고, 잘못된 push 시 이전 commit 으로 즉시 롤백 가능**. 수동은 FTP 비밀번호를 여러 명이 공유해야 하는 보안 이슈가 있음.
 
 ### 메일 발송 테스트
 
-`api/_test_mail.php` (임시 파일, 배포 후 삭제):
+자동/수동 배포 후 첫 1 회만:
 
-```php
+```bash
+# 임시 테스트 파일 작성 (배포 후 삭제)
+cat > api/_test_mail.php <<'EOF'
 <?php
 $ok = mail('snow@snowpuri.com', 'Test', 'Hello from SnowPuri site', 'From: noreply@snowpuri.com');
 var_dump($ok);
+EOF
 ```
+
+브라우저로 `https://snowpuri.com/api/_test_mail.php` 접속 → `bool(true)` 이면 정상. **테스트 후 파일 삭제**.
 
 ---
 
@@ -204,6 +266,39 @@ var_dump($ok);
 - [x] 보안 헤더 (X-Frame-Options, X-Content-Type-Options)
 - [x] Honeypot 스팸 차단
 - [x] 클라이언트 + 서버 양쪽 검증
+
+---
+
+## 환경 변수 / 시크릿 정리
+
+이 프로젝트는 코드에 하드코딩된 비밀값이 없고, **모든 시크릿은 GitHub Secrets 또는 호스팅 환경변수에만** 저장합니다.
+
+### GitHub Actions 배포 시크릿
+
+| Secret | 용도 | 비고 |
+|---|---|---|
+| `FTP_SERVER` | Hostinger FTP 호스트 | 필수 |
+| `FTP_USERNAME` | FTP 계정 | 필수 |
+| `FTP_PASSWORD` | FTP 비밀번호 | 필수 |
+| `FTP_LOCAL_DIR` | 업로드할 로컬 디렉터리 | 선택 (기본 `.`) |
+| `FTP_REMOTE_DIR` | 원격 업로드 경로 | 선택 (기본 `/public_html`) |
+| `FTP_SECURE` | `ftps` 또는 `ftp` | 선택 (기본 `ftps`) |
+
+> **Secrets 는 절대 커밋 금지.** `.gitignore` 에 `.env`, `.env.local` 이 포함되어 있어 실수로 커밋되어도 Git 이 추적하지 않습니다.
+
+### 호스팅 측 설정값 (코드와 분리됨)
+
+`api/contact.php` 와 `api/hostinger-mail.php` 등의 API 가 다음 상수를 사용합니다. 기본값이 코드에 들어 있지만, **운영 환경에서는 hPanel → Advanced → PHP Configuration → Environment variables** 또는 wp-config 스타일 외부 파일로 덮어쓰는 것을 권장합니다.
+
+| 변수명 | 용도 | 기본값 (코드) |
+|---|---|---|
+| `$RECIPIENT` | 문의 메일 수신 주소 | `snow@snowpuri.com` |
+| `$FROM_ADDR` | 발신자 주소 (SPF/DKIM 통과용) | `noreply@snowpuri.com` |
+| `$MAX_BODY_KB` | 문의 본문 최대 크기 | `32` |
+
+### 브라우저 측 노출 변수
+
+없음. 모든 사용자 데이터는 폼 입력으로만 수집되며 별도 외부 API 키를 노출하지 않습니다.
 
 ---
 

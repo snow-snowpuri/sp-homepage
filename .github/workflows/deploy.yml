@@ -1,0 +1,79 @@
+name: Deploy to Hostinger
+
+name: Deploy to Hostinger
+
+# 트리거: main push 시 자동 배포 + Actions 탭 수동 실행.
+# 필수 Secrets (Settings → Secrets and variables → Actions):
+#   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
+# 옵션 Variables: FTP_LOCAL_DIR(.), FTP_REMOTE_DIR(/public_html), FTP_SECURE(ftps).
+# Secrets 는 코드에 절대 커밋 금지.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hostinger
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Validate (PHP syntax + JSON)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+
+      - name: PHP syntax check
+        run: |
+          set -e
+          find . -name '*.php' -not -path './docker/*' -print0 | xargs -0 -n1 php -l
+
+      - name: Validate JSON (i18n)
+        run: |
+          set -e
+          for f in data/i18n/*.json; do
+            php -r "json_decode(file_get_contents('$f'), true, 512, JSON_THROW_ON_ERROR) ?: exit(1);" && echo "OK: $f"
+          done
+
+      - name: Validate services.php returns array
+        run: |
+          php -r "\$d = require 'data/services.php'; if (!is_array(\$d) || !isset(\$d['services']) || !is_array(\$d['services'])) { fwrite(STDERR, 'data/services.php malformed\n'); exit(1); } echo 'OK: services=' . count(\$d['services']) . PHP_EOL;"
+
+  deploy:
+    name: FTP upload to Hostinger
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: FTP Deploy
+        uses: SamKirkland/ftp-deploy-action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ${{ vars.FTP_LOCAL_DIR || '.' }}
+          server-dir: ${{ vars.FTP_REMOTE_DIR || '/public_html' }}
+          protocol: ${{ vars.FTP_SECURE || 'ftps' }}
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git/**
+            **/.github/**
+            **/docker/**
+            **/docs/**
+            docker/
+            .git/
+            .github/
+            README.md
+            CLAUDE.md
+            .gitignore
+          log-level: verbose

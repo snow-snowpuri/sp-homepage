@@ -78,13 +78,6 @@ function render_nav(): void {
         </span>
         <span class="brand-name">SnowPuri</span>
       </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#manifesto"><?= t('nav.manifesto') ?></a>
-        <a href="#services"><?= t('nav.services') ?></a>
-        <a href="#featured"><?= t('nav.highlight') ?></a>
-        <a href="#stats"><?= t('nav.stats') ?></a>
-        <a href="#contact"><?= t('nav.contact') ?></a>
-      </nav>
       <div class="nav-right">
         <a class="lang-switch" href="<?= h($href) ?>" aria-label="Switch language" rel="alternate" hreflang="<?= h($other) ?>">
           <span class="lang-switch__opt <?= $lang === 'ko' ? 'is-active' : '' ?>">KO</span>
@@ -96,6 +89,13 @@ function render_nav(): void {
         <span></span><span></span><span></span>
       </button>
     </div>
+    <nav class="nav-links" aria-label="Primary" data-nav-links>
+      <a href="#manifesto"><?= t('nav.manifesto') ?></a>
+      <a href="#services"><?= t('nav.services') ?></a>
+      <a href="#featured"><?= t('nav.highlight') ?></a>
+      <a href="#stats"><?= t('nav.stats') ?></a>
+      <a href="#contact"><?= t('nav.contact') ?></a>
+    </nav>
   </header>
   <?php
 }
