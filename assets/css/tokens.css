@@ -1,0 +1,94 @@
+/* ====================================================================
+   SnowPuri — Design Tokens
+   ==================================================================== */
+
+:root {
+  /* ── Color (light, default) ── */
+  --bg-primary:     #FAFAFA;
+  --bg-elev:        #FFFFFF;
+  --bg-secondary:   #0A0E27;
+  --bg-soft:        #F3F4F6;
+  --bg-dark-elev:   #131836;
+
+  --text-primary:   #0A0E27;
+  --text-secondary: #5A6079;
+  --text-tertiary:  #8A90A6;
+  --text-on-dark:   #F4F5FA;
+  --text-on-dark-2: #A6ADC9;
+
+  --border:         #E5E7EB;
+  --border-strong:  #D1D5DB;
+  --border-on-dark: rgba(255, 255, 255, 0.08);
+
+  --accent:         #3B5BDB;        /* SnowPuri signature (Snowiki blue) */
+  --accent-soft:    rgba(59, 91, 219, 0.08);
+  --accent-strong:  #2A45B0;
+
+  --success:        #10B981;
+  --warning:        #F59E0B;
+  --danger:         #EF4444;
+
+  /* ── Spacing (8px scale) ── */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  20px;
+  --s-6:  24px;
+  --s-8:  32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-20: 80px;
+  --s-24: 96px;
+  --s-32: 128px;
+
+  /* ── Radius ── */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-2xl: 32px;
+  --r-pill: 999px;
+
+  /* ── Shadow ── */
+  --shadow-sm:  0 1px 2px rgba(10, 14, 39, 0.04), 0 1px 1px rgba(10, 14, 39, 0.03);
+  --shadow-md:  0 4px 12px rgba(10, 14, 39, 0.06), 0 2px 4px rgba(10, 14, 39, 0.04);
+  --shadow-lg:  0 12px 40px rgba(10, 14, 39, 0.08), 0 4px 12px rgba(10, 14, 39, 0.04);
+  --shadow-xl:  0 24px 60px rgba(10, 14, 39, 0.12), 0 8px 20px rgba(10, 14, 39, 0.06);
+  --shadow-glow: 0 0 0 1px var(--card-accent, var(--accent)), 0 12px 36px var(--card-accent, var(--accent));
+
+  /* ── Type ── */
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --fs-display: clamp(40px, 7vw, 80px);
+  --fs-h1:      clamp(32px, 5vw, 56px);
+  --fs-h2:      clamp(26px, 3.6vw, 40px);
+  --fs-h3:      clamp(18px, 2.2vw, 22px);
+  --fs-body:    17px;
+  --fs-small:   14px;
+  --fs-tiny:    12px;
+
+  --lh-display: 1.05;
+  --lh-heading: 1.2;
+  --lh-body:    1.6;
+
+  --ls-display: -0.02em;
+  --ls-heading: -0.015em;
+  --ls-body:    0;
+  --ls-eyebrow: 0.08em;
+
+  /* ── Layout ── */
+  --container:   1280px;
+  --gutter:      clamp(20px, 4vw, 48px);
+  --section-py:  clamp(72px, 9vw, 128px);
+
+  /* ── Motion ── */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:    180ms;
+  --dur-base:    320ms;
+  --dur-slow:    600ms;
+}

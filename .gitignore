@@ -1,0 +1,21 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local environment overrides
+docker/htaccess.local
+.env
+.env.local
+
+# PHP runtime / build artifacts
+/vendor/
+/composer.phar
+
+# Node (kept in case future builds appear)
+/node_modules/
+/package-lock.json
+yarn.lock

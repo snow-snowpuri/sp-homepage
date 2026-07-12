@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "title": "SnowPuri — 사람에게 진심인 웹을 만듭니다",
+    "description": "SnowPuri는 다양한 웹 서비스를 만드는 디지털 스튜디오입니다."
+  },
+  "nav": {
+    "services": "서비스",
+    "manifesto": "소개",
+    "highlight": "하이라이트",
+    "stats": "숫자",
+    "contact": "문의하기"
+  },
+  "hero": {
+    "title": "매일 매일\n새로운 서비스를.",
+    "subtitle": "SnowPuri는 사람에게 진심인 웹 경험을 만듭니다.",
+    "counter": "오늘까지 {count}개의 서비스를 만들었습니다.",
+    "counter_html": "오늘까지 <strong>{count}</strong>개의 서비스를 만들었습니다.",
+    "cta": "서비스 보기"
+  },
+  "manifesto": {
+    "title": "우리가 믿는 것",
+    "quote": "우리는 인공지능 AI와 함께 세상의 많은 것을 함께 바꾸어 나갑니다.",
+    "items": [
+      { "h": "진심", "p": "사용자의 일상에 진정성 있는 가치를 전합니다." },
+      { "h": "단순함", "p": "복잡한 기술을 단순한 경험으로 바꿉니다." },
+      { "h": "지속", "p": "작은 서비스도 꾸준히 길게 키웁니다." },
+      { "h": "자동화", "p": "반복은 도구에, 사람은 더 나은 일에 집중합니다." },
+      { "h": "데이터 신뢰", "p": "측정과 학습으로 더 나은 결정을 내립니다." },
+      { "h": "함께 성장", "p": "사용자·파트너·팀, 함께 만들어야 더 멀리 갑니다." }
+    ]
+  },
+  "services": {
+    "title": "우리가 만드는 것들",
+    "filter_all": "전체",
+    "filter_tools": "도구",
+    "filter_lifestyle": "라이프스타일",
+    "filter_entertainment": "엔터테인먼트",
+    "filter_ai": "AI · 자동화",
+    "filter_content": "콘텐츠",
+    "status_live": "바로 가기",
+    "status_beta": "베타",
+    "status_coming_soon": "곧 출시",
+    "notify": "알림 받기"
+  },
+  "featured": {
+    "title": "주목할 서비스",
+    "cta": "자세히 보기",
+    "prev": "이전 서비스",
+    "next": "다음 서비스"
+  },
+  "stats": {
+    "title": "숫자로 보는 SnowPuri",
+    "label_services": "총 서비스",
+    "label_live": "운영 중",
+    "label_users": "누적 사용자",
+    "label_countries": "서비스 국가"
+  },
+  "roadmap": {
+    "title": "곧 만나요",
+    "subtitle": "SnowPuri의 다음 프로젝트. 출시되면 가장 먼저 알려드릴게요."
+  },
+  "contact": {
+    "title": "함께 만들고 싶으신가요?",
+    "subtitle": "협업, 제휴, 채용 모두 환영합니다.",
+    "name_label": "이름",
+    "email_label": "이메일",
+    "message_label": "메시지",
+    "name_ph": "홍길동",
+    "email_ph": "you@example.com",
+    "message_ph": "어떤 이야기를 나눌까요?",
+    "submit": "보내기",
+    "submitting": "전송 중...",
+    "success": "전송되었습니다. 빠르게 답장드릴게요.",
+    "error": "전송에 실패했어요. 잠시 후 다시 시도하거나 직접 snow@snowpuri.com 으로 보내주세요.",
+    "fallback": "직접 메일 쓰기"
+  },
+  "footer": {
+    "tagline": "SnowPuri · 순수한 디지털 경험",
+    "copyright": "© {year} SnowPuri. All rights reserved."
+  }
+}

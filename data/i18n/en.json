@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "title": "SnowPuri — Web experiences made with care",
+    "description": "SnowPuri is a digital studio building a diverse portfolio of web services."
+  },
+  "nav": {
+    "services": "Services",
+    "manifesto": "About",
+    "highlight": "Featured",
+    "stats": "Numbers",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "A new service,\nevery day.",
+    "subtitle": "SnowPuri builds web experiences made with care.",
+    "counter": "We've built {count} services so far.",
+    "counter_html": "We've built <strong>{count}</strong> services so far.",
+    "cta": "See services"
+  },
+  "manifesto": {
+    "title": "What we believe",
+    "quote": "Together with artificial intelligence, we are changing many things in the world.",
+    "items": [
+      { "h": "Sincerity", "p": "We deliver real value to people's daily lives." },
+      { "h": "Simplicity", "p": "We turn complex technology into simple experiences." },
+      { "h": "Stewardship", "p": "We grow small services patiently and for the long term." },
+      { "h": "Automation", "p": "Repetitive tasks to tools, people to better work." },
+      { "h": "Data Trust", "p": "Measure, learn, choose better." },
+      { "h": "Together", "p": "Users, partners, team — we go further when we build together." }
+    ]
+  },
+  "services": {
+    "title": "What we make",
+    "filter_all": "All",
+    "filter_tools": "Tools",
+    "filter_lifestyle": "Lifestyle",
+    "filter_entertainment": "Entertainment",
+    "filter_ai": "AI · Automation",
+    "filter_content": "Content",
+    "status_live": "Open",
+    "status_beta": "Beta",
+    "status_coming_soon": "Coming soon",
+    "notify": "Notify me"
+  },
+  "featured": {
+    "title": "Featured",
+    "cta": "Learn more",
+    "prev": "Previous service",
+    "next": "Next service"
+  },
+  "stats": {
+    "title": "SnowPuri in numbers",
+    "label_services": "Total services",
+    "label_live": "Live now",
+    "label_users": "Cumulative users",
+    "label_countries": "Countries served"
+  },
+  "roadmap": {
+    "title": "Coming soon",
+    "subtitle": "The next things we're working on at SnowPuri. We'll let you know first when they ship."
+  },
+  "contact": {
+    "title": "Want to build together?",
+    "subtitle": "Collaborations, partnerships, and careers — all welcome.",
+    "name_label": "Name",
+    "email_label": "Email",
+    "message_label": "Message",
+    "name_ph": "Your name",
+    "email_ph": "you@example.com",
+    "message_ph": "What would you like to talk about?",
+    "submit": "Send",
+    "submitting": "Sending...",
+    "success": "Sent! We'll get back to you soon.",
+    "error": "Something went wrong. Please try again, or email snow@snowpuri.com directly.",
+    "fallback": "Email us directly"
+  },
+  "footer": {
+    "tagline": "SnowPuri · Pure digital experiences",
+    "copyright": "© {year} SnowPuri. All rights reserved."
+  }
+}
