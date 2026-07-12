@@ -59,9 +59,9 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ${{ vars.FTP_LOCAL_DIR || '.' }}
+          local-dir: ${{ vars.FTP_LOCAL_DIR || '/public_html' }}
           server-dir: ${{ vars.FTP_REMOTE_DIR || '/public_html' }}
-          protocol: ${{ vars.FTP_SECURE || 'ftps' }}
+          protocol: ${{ vars.FTP_SECURE || 'ftp' }}
           dangerous-clean-slate: false
           exclude: |
             **/.git/**
