@@ -1,7 +1,5 @@
 name: Deploy to Hostinger
 
-name: Deploy to Hostinger
-
 # 트리거: main push 시 자동 배포 + Actions 탭 수동 실행.
 # 필수 Secrets (Settings → Secrets and variables → Actions):
 #   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
