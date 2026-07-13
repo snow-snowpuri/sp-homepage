@@ -83,7 +83,7 @@ return [
 
     [
       'id'          => 'thtjf',
-      'name'        => '소설플랫폼(ThTj)',
+      'name'        => '소설 플랫폼 (ThTj)',
       'tagline'     => [
         'ko' => '다양한 웹 소설을 함께',
         'en' => 'Web novels, shared together',
@@ -106,7 +106,7 @@ return [
 
     [
       'id'          => 'vuswl',
-      'name'        => 'vuswl',
+      'name'        => 'Love Letter (vuswl)',
       'tagline'     => [
         'ko' => '사랑을 전하는 편지',
         'en' => 'Letters that carry love',
@@ -115,7 +115,7 @@ return [
         'ko' => '마음을 담은 편지를 주고받는 서비스.',
         'en' => 'A service for sharing heartfelt letters.',
       ],
-      'url'      => 'https://letter.snowpuri.com',
+      'url'      => 'https://www.vuswl.com',
       'category' => 'lifestyle',
       'tags'     => ['letters', 'emotion'],
       'accent'   => '#EC4899',
