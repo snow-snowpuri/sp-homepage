@@ -83,7 +83,7 @@ return [
 
     [
       'id'          => 'thtjf',
-      'name'        => '소설 플랫폼 (ThTj)',
+      'name'        => 'Novelpiad',
       'tagline'     => [
         'ko' => '다양한 웹 소설을 함께',
         'en' => 'Web novels, shared together',
