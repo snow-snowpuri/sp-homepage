@@ -29,7 +29,7 @@
 | **Snowiki** | tools | 팀·지식工作者 | `#3B5BDB` 슬레이트 블루 | 신뢰, 정돈 |
 | **KoreaTrip** | lifestyle | 외국인 여행자 | `#FF6B35` 코랄 오렌지 | 따뜻, 환대 |
 | **GameHell** | entertainment | 게이머 | `#FF006E` 네온 마젠타 | 강렬, 에너지 |
-| **ThTjf** | content | 독자·창작자 | `#8B5CF6` 라벤더 퍼플 | 상상, 감성 |
+| **Novelpiad** | content | 독자·창작자 | `#8B5CF6` 라벤더 퍼플 | 상상, 감성 |
 | **vuswl** | lifestyle | 누구나 (감성) | `#EC4899` 로즈 핑크 | 따뜻, 진심 |
 | **MakeBlog** | ai | 블로거·마케터 | `#10B981` 에메랄드 | 혁신, 성장 |
 

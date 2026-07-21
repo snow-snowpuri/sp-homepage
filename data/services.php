@@ -82,7 +82,7 @@ return [
     ],
 
     [
-      'id'          => 'thtjf',
+      'id'          => 'novelpiad',
       'name'        => 'Novelpiad',
       'tagline'     => [
         'ko' => '다양한 웹 소설을 함께',
@@ -148,6 +148,50 @@ return [
       'launchedAt' => '2024-06-01',
       'order'      => 6,
       'stats'    => ['users' => 5200, 'posts' => 145000],
+    ],
+
+    [
+      'id'          => 'ailog',
+      'name'        => 'ailog',
+      'tagline'     => [
+        'ko' => 'AI 주요 뉴스를 기록하다',
+        'en' => 'A log of major AI news',
+      ],
+      'description' => [
+        'ko' => 'AI 관련 주요 뉴스를 기록하고 정리하는 콘텐츠 서비스.',
+        'en' => 'A content service that records and curates major AI news.',
+      ],
+      'url'      => 'https://ailog.snowpuri.com/',
+      'category' => 'content',
+      'tags'     => ['ai', 'news', 'log'],
+      'accent'   => '#0EA5E9',
+      'icon'     => 'newspaper',
+      'status'   => 'live',
+      'featured' => false,
+      'launchedAt' => '2026-07-21',
+      'order'      => 7,
+    ],
+
+    [
+      'id'          => 'worldnews',
+      'name'        => 'World News',
+      'tagline'     => [
+        'ko' => '세상의 모든 뉴스',
+        'en' => 'News from around the world',
+      ],
+      'description' => [
+        'ko' => '전 세계 다양한 뉴스를 한 곳에서 제공하는 콘텐츠 서비스.',
+        'en' => 'A content service that brings together news from around the world.',
+      ],
+      'url'      => 'https://worldnews.snowpuri.com/',
+      'category' => 'content',
+      'tags'     => ['news', 'world', 'global'],
+      'accent'   => '#1E40AF',
+      'icon'     => 'globe',
+      'status'   => 'live',
+      'featured' => false,
+      'launchedAt' => '2026-07-21',
+      'order'      => 8,
     ],
 
   ],
