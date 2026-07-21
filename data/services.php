@@ -194,5 +194,27 @@ return [
       'order'      => 8,
     ],
 
+    [
+      'id'          => 'verta',
+      'name'        => 'Verta',
+      'tagline'     => [
+        'ko' => '무엇이든 즉시 변환하세요',
+        'en' => 'Convert anything, instantly.',
+      ],
+      'description' => [
+        'ko' => '다양한 형식과 데이터를 즉시 변환하는 유틸리티 도구.',
+        'en' => 'A utility tool that instantly converts between formats and data.',
+      ],
+      'url'      => 'https://verta.snowpuri.com/',
+      'category' => 'tools',
+      'tags'     => ['converter', 'utility'],
+      'accent'   => '#10B981',
+      'icon'     => 'shuffle',
+      'status'   => 'live',
+      'featured' => false,
+      'launchedAt' => '2026-07-21',
+      'order'      => 9,
+    ],
+
   ],
 ];
